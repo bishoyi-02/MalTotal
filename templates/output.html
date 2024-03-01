@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="{{ url_for('static',filename='styles/terminal.css') }}">
+  <title>MalTotal</title>
+</head>
+<body>
+  <div class="container">
+    <form class="four-oh-four-form">
+      <input type="text" class="404-input">
+    </form>
+    <form action="/success" method="post" 
+    onsubmit="myfunction(event)"
+     enctype="multipart/form-data">
+      <input
+        style="display: none"
+        type="file"
+        id="yourformhere"
+        name="file"
+        onchange="this.form.submit()"
+      />
+      <label class="btn btn-dark hidden" for="files">Select file</label>
+    </form>
+    <div class="terminal">
+        <p class="prompt">The file you uploaded is likely a {{name}}.</p>
+        <p class="prompt output new-output"></p>
+    </div>
+  <script>
+    function myfunction(e){
+      e.preventDefault();
+    }
+  </script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/velocity/1.2.2/velocity.min.js'></script>
+  <script src="script.js"></script>
+  <script src="{{url_for('static', filename='js/output_script.js')}}"></script>
+</body>
+</html>
